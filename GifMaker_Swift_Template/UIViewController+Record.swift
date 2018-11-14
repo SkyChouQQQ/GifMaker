@@ -56,7 +56,7 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
     func pickerControllerWithSource(pickerControllerWithSource sourceType:UIImagePickerControllerSourceType)->UIImagePickerController{
         let pickerVC = UIImagePickerController()
         pickerVC.sourceType = sourceType
-        pickerVC.allowsEditing = false
+        pickerVC.allowsEditing = true
         pickerVC.delegate = self
         pickerVC.mediaTypes = [kUTTypeMovie as String]
         return pickerVC
@@ -68,14 +68,17 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
         let mediaType = (info[UIImagePickerControllerMediaType] as! String)
             if mediaType == (kUTTypeMovie as String){
                 let mediaURL = info[UIImagePickerControllerMediaURL] as! NSURL
+                let videoStartTime = info["_UIImagePickerControllerVideoEditingStart"] as! NSNumber
+                let videoEndTime = info["_UIImagePickerControllerVideoEditingEnd"] as! NSNumber
+                let duration = NSNumber(value: videoEndTime.floatValue-videoStartTime.floatValue)
                 //UISaveVideoAtPathToSavedPhotosAlbum(mediaURL.path!, nil, nil, nil)
-                converVideoToGif(videoSourceURL: mediaURL as URL)
+                convertVideoToGif(videoSourceURL: mediaURL as URL, withStartTime: videoStartTime.floatValue, withDuration: duration.floatValue)
                 dismiss(animated: true, completion: nil)
                 
             }
         
     }
-    public func imagePickerControllerDidCancselel(_ picker:UIImagePickerController){
+    public func imagePickerControllerDidCancselel(_ picker:UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 
@@ -83,8 +86,12 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
 
 //MARK:Convert video to gif method
 
-    func converVideoToGif(videoSourceURL:URL){
-        let regift = Regift(sourceFileURL: videoSourceURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+    func convertVideoToGif(videoSourceURL:URL,withStartTime startTime:Float?,withDuration duration:Float?){
+       
+        let regift = (startTime == nil ?
+            Regift(sourceFileURL: videoSourceURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount):
+            Regift(sourceFileURL: videoSourceURL, startTime: startTime!, duration: duration!, frameRate: kFrameRate))
+
         let gifURL = regift.createGif()
         let gif = Gif(url:gifURL!, rawVideoUrl:videoSourceURL, caption:nil)
         displayGif(gif: gif)
