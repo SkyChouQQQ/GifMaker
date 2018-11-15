@@ -68,17 +68,22 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
         let mediaType = (info[UIImagePickerControllerMediaType] as! String)
             if mediaType == (kUTTypeMovie as String){
                 let mediaURL = info[UIImagePickerControllerMediaURL] as! NSURL
-                let videoStartTime = info["_UIImagePickerControllerVideoEditingStart"] as! NSNumber
-                let videoEndTime = info["_UIImagePickerControllerVideoEditingEnd"] as! NSNumber
-                let duration = NSNumber(value: videoEndTime.floatValue-videoStartTime.floatValue)
+                let videoStartTime = info["_UIImagePickerControllerVideoEditingStart"] as? NSNumber
+                let videoEndTime = info["_UIImagePickerControllerVideoEditingEnd"] as? NSNumber
+                var duration:NSNumber?
+                if let videoStartTime = videoStartTime{
+                duration = NSNumber(value: videoEndTime!.floatValue-videoStartTime.floatValue)
+                } else{
+                    duration = nil
+                }
                 //UISaveVideoAtPathToSavedPhotosAlbum(mediaURL.path!, nil, nil, nil)
-                convertVideoToGif(videoSourceURL: mediaURL as URL, withStartTime: videoStartTime.floatValue, withDuration: duration.floatValue)
+                convertVideoToGif(videoSourceURL: mediaURL as URL, withStartTime: videoStartTime, withDuration: duration)
                 dismiss(animated: true, completion: nil)
                 
             }
         
     }
-    public func imagePickerControllerDidCancselel(_ picker:UIImagePickerController) {
+    public func imagePickerControllerDidCancel(_ picker:UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
 
@@ -86,11 +91,13 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
 
 //MARK:Convert video to gif method
 
-    func convertVideoToGif(videoSourceURL:URL,withStartTime startTime:Float?,withDuration duration:Float?){
+    func convertVideoToGif(videoSourceURL:URL,withStartTime startTime:NSNumber?,withDuration duration:NSNumber?){
        
         let regift = (startTime == nil ?
+            //trimmed
             Regift(sourceFileURL: videoSourceURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount):
-            Regift(sourceFileURL: videoSourceURL, startTime: startTime!, duration: duration!, frameRate: kFrameRate))
+            //untrimmed
+            Regift(sourceFileURL: videoSourceURL, startTime: startTime!.floatValue, duration: duration!.floatValue, frameRate: kFrameRate))
 
         let gifURL = regift.createGif()
         let gif = Gif(url:gifURL!, rawVideoUrl:videoSourceURL, caption:nil)
