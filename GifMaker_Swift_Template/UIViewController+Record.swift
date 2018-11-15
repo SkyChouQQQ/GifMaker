@@ -28,7 +28,7 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
         } else {
             let newGifActionSheet = UIAlertController(title: "Create new GIF", message: nil, preferredStyle: .actionSheet)
             //newGifActionSheet.view.tintColor = UIColor(displayP3Red: 1.0, green: 65.0/255.0, blue: 112.0/255.0, alpha: 1.0)
-            let recordVideo = UIAlertAction(title: "record a video", style: .default, handler: {(action) in
+            let recordVideo = UIAlertAction(title: "Record a video", style: .default, handler: {(action) in
                 self.launchCamera()
             })
             let chooseFormExisting = UIAlertAction(title: "Choose from Existing Album", style: .default, handler:{(action) in
@@ -78,16 +78,16 @@ extension UIViewController:UIImagePickerControllerDelegate,UINavigationControlle
                     duration = nil
                 }
                 //UISaveVideoAtPathToSavedPhotosAlbum(mediaURL.path!, nil, nil, nil)
-                self.cropVideoToSquare(rawVideoUrl: mediaURL as URL, startTime: videoStartTime!, duration: duration!)
-                //convertVideoToGif(videoSourceURL: mediaURL as URL, withStartTime: videoStartTime, withDuration: duration)
+                //self.cropVideoToSquare(rawVideoUrl: mediaURL as URL, startTime: videoStartTime, duration: duration)
+                self.convertVideoToGif(videoSourceURL: mediaURL as URL, withStartTime: videoStartTime, withDuration: duration)
                 dismiss(animated: true, completion: nil)
                 
             }
         
     }
     
-    
-    public func cropVideoToSquare(rawVideoUrl videoUrl:URL, startTime start:NSNumber, duration duration:NSNumber){
+    //to do: crop has some bugs
+    public func cropVideoToSquare(rawVideoUrl videoUrl:URL, startTime start:NSNumber?, duration:NSNumber?){
 //
 //        AVAsset：素材库里的素材；
 //        AVAssetTrack：素材的轨道；

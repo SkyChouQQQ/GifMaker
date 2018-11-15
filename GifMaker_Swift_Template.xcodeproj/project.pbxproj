@@ -11,6 +11,8 @@
 		84604348219ACA9B00304EED /* GifEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84604347219ACA9B00304EED /* GifEditorViewController.swift */; };
 		8460434A219ACAAE00304EED /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84604349219ACAAE00304EED /* PreviewViewController.swift */; };
 		8460434E219ACFAD00304EED /* UIViewController+Record.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8460434D219ACFAD00304EED /* UIViewController+Record.swift */; };
+		8464EAFA219D6951003FF70E /* SavedGifsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464EAF9219D6951003FF70E /* SavedGifsViewController.swift */; };
+		8464EAFC219D8651003FF70E /* GifCellCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8464EAFB219D8651003FF70E /* GifCellCollectionViewCell.swift */; };
 		846649DB219BE2E200FDFCDD /* UIImage+gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846649DA219BE2E200FDFCDD /* UIImage+gif.swift */; };
 		846649DD219C090200FDFCDD /* Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846649DC219C090200FDFCDD /* Gif.swift */; };
 		A93B3B081D2D3F7900BE1662 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93B3B041D2D3F7900BE1662 /* LaunchScreen.xib */; };
@@ -29,6 +31,8 @@
 		84604347219ACA9B00304EED /* GifEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifEditorViewController.swift; sourceTree = "<group>"; };
 		84604349219ACAAE00304EED /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		8460434D219ACFAD00304EED /* UIViewController+Record.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Record.swift"; sourceTree = "<group>"; };
+		8464EAF9219D6951003FF70E /* SavedGifsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedGifsViewController.swift; sourceTree = "<group>"; };
+		8464EAFB219D8651003FF70E /* GifCellCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifCellCollectionViewCell.swift; sourceTree = "<group>"; };
 		846649DA219BE2E200FDFCDD /* UIImage+gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+gif.swift"; sourceTree = "<group>"; };
 		846649DC219C090200FDFCDD /* Gif.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gif.swift; sourceTree = "<group>"; };
 		A93B3B051D2D3F7900BE1662 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -99,7 +103,9 @@
 				84604347219ACA9B00304EED /* GifEditorViewController.swift */,
 				84604349219ACAAE00304EED /* PreviewViewController.swift */,
 				846649DC219C090200FDFCDD /* Gif.swift */,
+				8464EAF9219D6951003FF70E /* SavedGifsViewController.swift */,
 				8460434D219ACFAD00304EED /* UIViewController+Record.swift */,
+				8464EAFB219D8651003FF70E /* GifCellCollectionViewCell.swift */,
 				A94CC3D71D21C85A00DC758E /* Assets */,
 				A94CC3D61D21C84C00DC758E /* Supporting Files */,
 				EDFAA9221CDA9C4700D2CB08 /* Regift Files */,
@@ -195,10 +201,12 @@
 			files = (
 				EDFAA9201CDA9C3100D2CB08 /* Regift.swift in Sources */,
 				84604346219ACA7D00304EED /* WelcomeViewController.swift in Sources */,
+				8464EAFA219D6951003FF70E /* SavedGifsViewController.swift in Sources */,
 				8460434A219ACAAE00304EED /* PreviewViewController.swift in Sources */,
 				84604348219ACA9B00304EED /* GifEditorViewController.swift in Sources */,
 				846649DD219C090200FDFCDD /* Gif.swift in Sources */,
 				EDFAA9211CDA9C3100D2CB08 /* RegiftCaption.swift in Sources */,
+				8464EAFC219D8651003FF70E /* GifCellCollectionViewCell.swift in Sources */,
 				EDFAA8ED1CDA99A500D2CB08 /* AppDelegate.swift in Sources */,
 				EDFAA91F1CDA9C3100D2CB08 /* AVAssetImageGeneratorTimePoints.swift in Sources */,
 				8460434E219ACFAD00304EED /* UIViewController+Record.swift in Sources */,
