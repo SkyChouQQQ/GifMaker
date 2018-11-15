@@ -8,13 +8,20 @@
 
 import UIKit
 
+var gifsFilePath: String {
+    let directories = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    let documentsPath = directories[0]
+    let gifsPath = documentsPath.appendingFormat("/savedGifs")
+    return gifsPath
+}
+
 class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,PreviewViewControllerDelegate {
     
     //MARK:- save GIF from PreviewViewController
     @IBAction func saveNewgifFromPreviewVC(_ segue:UIStoryboardSegue){
         if segue.identifier == "saveNewgifFromPreviewVCSegueIditifier",  let previewVC = segue.source as? PreviewViewController{
             self.gifs.append(previewVC.gif!)
-
+            NSKeyedArchiver.archiveRootObject(gifs, toFile: gifsFilePath)
             collectionView.reloadData()
         }
     }
@@ -38,6 +45,9 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let unArchiverGif = NSKeyedUnarchiver.unarchiveObject(withFile: gifsFilePath) as? [Gif]{
+            self.gifs = unArchiverGif
+        }
         
         // Do any additional setup after loading the view.
     }
