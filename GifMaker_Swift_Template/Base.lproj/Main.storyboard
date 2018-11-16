@@ -165,6 +165,7 @@
                     <connections>
                         <outlet property="collectionView" destination="hbv-Kk-KXX" id="2r5-k1-URd"/>
                         <outlet property="emptyView" destination="IOx-EA-SOI" id="rZ6-rq-GYv"/>
+                        <outlet property="welcomeLabel" destination="9gY-ir-reI" id="RfQ-gs-BeV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1mO-R1-5Re" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -320,6 +321,9 @@
                                 <state key="normal" title="SHARE">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="shareGifButtomPressed:" destination="Ilf-GF-t1a" eventType="touchUpInside" id="tAj-aP-ptj"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fMj-xi-5Fm">
                                 <rect key="frame" x="16" y="162" width="343" height="343"/>
@@ -334,6 +338,9 @@
                                     <constraint firstAttribute="width" constant="44" id="aAD-pY-dof"/>
                                 </constraints>
                                 <state key="normal" image="Close"/>
+                                <connections>
+                                    <action selector="dismissViewController" destination="Ilf-GF-t1a" eventType="touchUpInside" id="QQd-iw-fHq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.18039215689999999" green="0.23921568630000001" blue="0.28235294119999998" alpha="0.89705230496453903" colorSpace="custom" customColorSpace="sRGB"/>
@@ -349,10 +356,13 @@
                             <constraint firstItem="8DJ-Ka-ETF" firstAttribute="top" secondItem="tie-bE-ygI" secondAttribute="bottom" constant="20" id="zYz-Sa-xDb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="gifImageView" destination="fMj-xi-5Fm" id="UCZ-34-ZUL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BEl-4x-y0s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1215" y="66"/>
+            <point key="canvasLocation" x="-164" y="-83"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="MO7-ys-2QJ">

@@ -36,12 +36,14 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
 //        print("after appended,number of gifs stored is \(gifs.count)")
     }
     
+    //MARK: - View Controller Lifecycle
     
+    
+    @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyView: UIImageView!
     var gifs = [Gif]()
     let collectionViewCellMargin:CGFloat = 12.0
-    //MARK: - View Controller Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +56,7 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         emptyView.isHidden = (gifs.count != 0)
-      
+        welcomeLabel.isHidden = (gifs.count != 0)
         collectionView.reloadData()
         
         //print("number of gifs stored is \(gifs.count)")
@@ -82,10 +84,14 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
          let gif = gifs[indexPath.item]
          cell.contfigureForGif(forGif: gif)
          return cell
-        
-        
     }
-
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let detailGifVC = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController{
+            detailGifVC.gif = gifs[indexPath.item]
+            detailGifVC.modalPresentationStyle = .overCurrentContext
+            present(detailGifVC,animated: true)
+        }
+    }
     
     
     /*
