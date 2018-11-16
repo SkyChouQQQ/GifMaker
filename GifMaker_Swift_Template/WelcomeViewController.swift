@@ -15,7 +15,7 @@ class WelcomeViewController: UIViewController {
    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -23,6 +23,7 @@ class WelcomeViewController: UIViewController {
         super.viewWillAppear(animated)
         let testGifImage = UIImage.gif(name:"tinaFeyHiFive")
         gifImageView.image = testGifImage
+        UserDefaults.standard.set(true, forKey: "WelcomeViewSeen")
     }
     /*
     // MARK: - Navigation

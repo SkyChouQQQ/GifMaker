@@ -51,6 +51,8 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
             self.gifs = unArchiverGif
         }
         
+        self.showWelcome()
+        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +62,14 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
         collectionView.reloadData()
         
         //print("number of gifs stored is \(gifs.count)")
+    }
+    func showWelcome(){
+        if UserDefaults.standard.bool(forKey: "WelcomeViewSeen") != true {
+            if let welcomeVC = storyboard?.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+                self.navigationController?.pushViewController(welcomeVC, animated: true)
+            }
+        }
+        
     }
     
     // MARK: - UICollectionViewDelegateFlowLayout
