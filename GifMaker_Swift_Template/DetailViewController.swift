@@ -17,6 +17,7 @@ class DetailViewController: UIViewController {
         if let gif = gif {
             self.gifImageView.image = gif.gifImage
         }
+        self.applyTheme(withTheme: .DarkTranslucent)
         // Do any additional setup after loading the view.
     }
     

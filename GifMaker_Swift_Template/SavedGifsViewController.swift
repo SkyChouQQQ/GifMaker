@@ -60,6 +60,7 @@ class SavedGifsViewController: UIViewController,UICollectionViewDelegate,UIColle
         emptyView.isHidden = (gifs.count != 0)
         welcomeLabel.isHidden = (gifs.count != 0)
         collectionView.reloadData()
+        self.applyTheme(withTheme:.Dark)
         
         //print("number of gifs stored is \(gifs.count)")
     }

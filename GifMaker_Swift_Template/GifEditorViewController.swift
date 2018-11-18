@@ -29,7 +29,7 @@ class GifEditorViewController: UIViewController,UITextFieldDelegate {
         super.viewWillAppear(animated)
         
         gifImageView.image = gif?.gifImage
-
+        self.applyTheme(withTheme: .Dark)
         subscribeToKeyboardNotifications()
     }
     

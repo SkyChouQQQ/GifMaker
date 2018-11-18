@@ -28,6 +28,10 @@ class PreviewViewController: UIViewController {
     }
     
     // MARK: - Share
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.applyTheme(withTheme: .Dark)
+    }
     
     @IBAction func shareGifButtomPressed(_ sender: UIButton) {
         
