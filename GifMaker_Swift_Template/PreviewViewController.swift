@@ -24,6 +24,13 @@ class PreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gifPreviewImageView.image = gif?.gifImage
+        
+        // Customize Buttons
+//        [self.shareButton.layer setCornerRadius:4.0];
+//        [self.shareButton.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:65.0/255.0 blue:112.0/255.0 alpha:1.0] CGColor]];
+//        [self.shareButton.layer setBorderWidth:1.0];
+//
+//        [self.saveButton.layer setCornerRadius:4.0];
         // Do any additional setup after loading the view.
     }
     

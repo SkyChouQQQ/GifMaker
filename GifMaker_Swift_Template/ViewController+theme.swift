@@ -27,6 +27,7 @@ extension UIViewController {
                 "NSForegroundColorAttributeName":UIColor.init(red: 46.0/255.0, green: 61.0/255.0, blue: 73.0/255.0, alpha: 1.0)
             ]
             self.view.backgroundColor = UIColor.white
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             break
             //    case Light:
             //    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
@@ -38,7 +39,7 @@ extension UIViewController {
         //    [self.view setBackgroundColor:[UIColor whiteColor]];
         case .Dark:
             self.view.backgroundColor = UIColor.init(red: 46.0/255.0, green: 61.0/255.0, blue: 73.0/255.0, alpha: 1.0)
-            self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+            self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
             self.navigationController?.navigationBar.shadowImage = UIImage()
             self.navigationController?.navigationBar.isTranslucent = true
             self.navigationController?.view.backgroundColor = UIColor.init(red: 46.0/255.0, green: 61.0/255.0, blue: 73.0/255.0, alpha: 1.0)
@@ -46,9 +47,9 @@ extension UIViewController {
             // self.edgesForExtendedLayout
             self.navigationController?.navigationBar.tintColor = UIColor.white
             self.navigationController?.navigationBar.titleTextAttributes = [
-                "NSForegroundColorAttributeName":UIColor.white
+                 NSForegroundColorAttributeName: UIColor.white
             ]
-            
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             //    case Dark:
             //    [self.view setBackgroundColor:[UIColor colorWithRed:46.0/255.0 green:61.0/255.0 blue:73.0/255.0 alpha:1.0]];
             //

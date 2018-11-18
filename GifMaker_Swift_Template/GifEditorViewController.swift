@@ -23,12 +23,28 @@ class GifEditorViewController: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
         captionTextField.delegate = self
         
+        let defaultTitleAttributeDict:[String : Any] = [NSStrokeColorAttributeName:UIColor.black,
+                                         NSStrokeWidthAttributeName:-4,
+                                         NSForegroundColorAttributeName:UIColor.white,
+                                         NSFontAttributeName : UIFont(name: "HelveticaNeue-CondensedBlack", size: 40.0)
+            
+            ]
+        self.captionTextField.defaultTextAttributes = defaultTitleAttributeDict
+        self.captionTextField.textAlignment = .center
+        self.captionTextField.attributedPlaceholder = NSAttributedString(string: "Add Caption", attributes: defaultTitleAttributeDict)
+//        NSDictionary *defaultAttributes = @{NSStrokeColorAttributeName : [UIColor blackColor],
+//            NSStrokeWidthAttributeName : @(-4),
+//            NSForegroundColorAttributeName : [UIColor whiteColor],
+//            NSFontAttributeName : [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:40.0]};
+//        [self.captionTextField setDefaultTextAttributes:defaultAttributes];
+//        [self.captionTextField setTextAlignment:NSTextAlignmentCenter];
+//        [self.captionTextField setAttributedPlaceholder:[[NSAttributedString alloc] initWithString:@"Add Caption" attributes:defaultAttributes]];
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         gifImageView.image = gif?.gifImage
+        self.title = "Add Caption"
         self.applyTheme(withTheme: .Dark)
         subscribeToKeyboardNotifications()
     }
